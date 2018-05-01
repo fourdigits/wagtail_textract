@@ -2,3 +2,9 @@ Text extraction for Wagtail document search
 ===========================================
 
 https://github.com/wagtail/wagtail/issues/542
+
+Installation
+------------
+
+- Add `wagtail_textract` to your requirements and/or `pip install wagtail_textract`
+- Add to your Django `INSTALLED_APPS`, after `wagtail.documents`.
