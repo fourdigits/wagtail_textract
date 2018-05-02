@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 
 class Document(WagtailDocument):
     """Extra fields and methods for Document model."""
-    transcription = models.TextField(null=True, blank=True)
+    transcription = models.TextField(default='')
     search_fields = WagtailDocument.search_fields + [
         index.SearchField(
             'transcription',
