@@ -2,14 +2,21 @@ import logging
 import textract
 
 from django.db import models
-from wagtail.documents.models import Document
+from wagtail.documents.models import Document as WagtailDocument
+from wagtail.search import index
 
 logger = logging.getLogger(__name__)
 
 
-class Document(Document):
+class Document(WagtailDocument):
     """Extra fields and methods for Document model."""
     transcription = models.TextField(null=True)
+    search_fields = WagtailDocument.search_fields + [
+        index.SearchField(
+            'transcription',
+            partial_match=False,
+        ),
+    ]
 
     def transcribe(self):
         """Extract text from file."""
