@@ -30,7 +30,7 @@ setup(
     packages=find_packages('src'),
     include_package_data=True,
     license='BSD',
-    long_description=open('README.rst', 'r').read(),
+    long_description=open('README.md', 'r').read(),
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Environment :: Web Environment',
