@@ -42,13 +42,14 @@ class Document(WagtailDocument):
 
         if text:
             self.transcription = text.decode()
-            # Call super() to prevent sending document_saved signal
-            super(Document, self).save()
+            self.save(document_saved_signal=False)
             print("Saved transcription: %s" % text)
         else:
             logger.error('No text found.')
 
     def save(self, **kwargs):
         """Send the document_saved signal."""
+        send_signal = kwargs.pop('document_saved_signal', True)
         super(Document, self).save(**kwargs)
-        document_saved.send(sender=self.__class__, instance=self)
+        if send_signal:
+            document_saved.send(sender=self.__class__, instance=self)
