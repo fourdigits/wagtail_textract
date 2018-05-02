@@ -18,7 +18,7 @@ The package was inspired by the ["Search: Extract text from documents" issue][3]
 Transcribing is done automatically on Document save.
 
 This is done using a new `document_saved` signal,
-which is emitted by the new Document on save.
+which is emitted by the new Document model's object on every save.
 
 To transcribe all existing Documents, run the management command::
 
