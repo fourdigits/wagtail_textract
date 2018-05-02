@@ -5,6 +5,8 @@ from django.db import models
 from wagtail.documents.models import Document as WagtailDocument
 from wagtail.search import index
 
+from .signals import document_saved
+
 logger = logging.getLogger(__name__)
 
 
@@ -33,5 +35,12 @@ class Document(WagtailDocument):
 
         if text:
             self.transcription = text.decode()
-            self.save()
+            # Call super() to prevent sending document_saved signal
+            super(Document, self).save()
             logger.info("Saved transcription: %s" % text)
+            print("Saved transcription: %s" % text)
+
+    def save(self, **kwargs):
+        """Send the document_saved signal."""
+        super(Document, self).save(**kwargs)
+        document_saved.send(sender=self.__class__, instance=self)

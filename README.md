@@ -15,10 +15,16 @@ The package was inspired by the ["Search: Extract text from documents" issue][3]
 
 ## Transcribing
 
-Run the management command::
+Transcribing is done automatically on Document save.
+
+This is done using a new `document_saved` signal,
+which is emitted by the new Document on save.
+
+To transcribe all existing Documents, run the management command::
 
     ./manage.py transcribe_documents
 
+This may take a long time, obviously.
 
 
 [1]: https://wagtail.io/
