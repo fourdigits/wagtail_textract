@@ -13,6 +13,16 @@ The package was inspired by the ["Search: Extract text from documents" issue][3]
 - Put `WAGTAILDOCS_DOCUMENT_MODEL = "wagtail_textract.document"` in your Django settings.
 
 
+### Tesseract
+
+In order to make `textract` use [Tesseract][4], which happens if regular
+`textract` finds no text, you need to add the data files that Tesseract can
+base its word matching on.
+
+Create a `tessdata` directory in your project directory, and download the
+[languages][5] you want.
+
+
 ## Transcribing
 
 Transcribing is done automatically on Document save.
@@ -27,6 +37,13 @@ To transcribe all existing Documents, run the management command::
 This may take a long time, obviously.
 
 
+## TO DO
+
+- Check textract dependency version compatibility with current Wagtail dependencies
+- Handle `transcribe()` asynchronously or in a cron job, to prevent long waits on upload / edit
+
 [1]: https://wagtail.io/
 [2]: https://github.com/deanmalmgren/textract
 [3]: https://github.com/wagtail/wagtail/issues/542
+[4]: https://github.com/tesseract-ocr
+[5]: https://github.com/tesseract-ocr/tessdata
