@@ -6,9 +6,9 @@ from .patch_model import patch_model
 
 class DocumentOverride(object):
     """Extra fields and methods for Document model."""
-    extracted_text = models.TextField(null=True)
+    transcription = models.TextField(null=True)
 
-    def extract_text(self):
+    def transcribe(self):
         """Extract text from file."""
         pass
 
