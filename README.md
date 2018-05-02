@@ -3,6 +3,8 @@
 This package is for replacing [Wagtail][1]'s Document class with one
 that allows searching in Document file contents using [textract][2].
 
+Textract can extract text from (among [others][6]) PDF, Excel and Word files.
+
 The package was inspired by the ["Search: Extract text from documents" issue][3] in Wagtail.
 
 ## Installation
@@ -47,3 +49,4 @@ This may take a long time, obviously.
 [3]: https://github.com/wagtail/wagtail/issues/542
 [4]: https://github.com/tesseract-ocr
 [5]: https://github.com/tesseract-ocr/tessdata
+[6]: http://textract.readthedocs.io/en/stable/#currently-supporting
