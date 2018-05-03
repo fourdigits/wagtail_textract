@@ -10,6 +10,9 @@ The package was inspired by the ["Search: Extract text from documents" issue][3]
 Documents will work as before, except that Document search in Wagtail's admin interface
 will also find search terms in the files' contents.
 
+The assumption is that this search should not only be available in Wagtail's admin interface,
+but also in a public-facing search view, for which we provide a code example.
+
 
 ## Requirements
 
@@ -49,6 +52,50 @@ To transcribe all existing Documents, run the management command::
     ./manage.py transcribe_documents
 
 This may take a long time, obviously.
+
+
+## Usage in custom view
+
+Here is a code example for a search view (outside Wagtail's admin interface)
+that shows both Page and Document results.
+
+```python
+from itertools import chain
+
+from wagtail.core.models import Page
+from wagtail.documents.models import get_document_model
+
+
+def search(request):
+    # Search
+    search_query = request.GET.get('query', None)
+    if search_query:
+        page_results = Page.objects.live().search(search_query)
+        document_results = Document.objects.search(search_query)
+        search_results = list(chain(page_results, document_results))
+
+        # Log the query so Wagtail can suggest promoted results
+        Query.get(search_query).add_hit()
+    else:
+        search_results = Page.objects.none()
+
+    # Render template
+    return render(request, 'website/search_results.html', {
+        'search_query': search_query,
+        'search_results': search_results,
+    })
+```
+
+Your template should allow for handling Documents differently than Pages,
+because you can't do `pageurl result` on a Document:
+
+```jinja2
+{% if result.file %}
+   <a href="{{ result.url }}">{{ result }}</a>
+{% else %}
+   <a href="{% pageurl result %}">{{ result }}</a>
+{% endif %}
+```
 
 
 ## TO DO
