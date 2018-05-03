@@ -5,9 +5,17 @@ from wagtail.search import index
 from .signals import document_saved
 
 
-class Document(WagtailDocument):
+class TranscriptionMixin(models.Model):
+    """Mixin class with transcription field."""
+    transcription = models.TextField(default='', blank=True)
+
+    class Meta:
+        """Don't create a table, this model is only for subclassing."""
+        abstract = True
+
+
+class Document(WagtailDocument, TranscriptionMixin):
     """Extra fields and methods for Document model."""
-    transcription = models.TextField(default='')
     search_fields = WagtailDocument.search_fields + [
         index.SearchField(
             'transcription',

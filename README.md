@@ -98,6 +98,38 @@ because you can't do `pageurl result` on a Document:
 ```
 
 
+## What if you already use a custom Document model?
+
+In order to use wagtail_textract, your `CustomizedDocument` model should do
+the same as [wagtail_textract's Document](./src/wagtail_textract/models.py):
+
+- subclass `TranscriptionMixin`
+- alter `search_fields`
+- modify `save()`
+
+```python
+from wagtail_textrans.signals import document_saved
+from wagtail_textrans.models import TranscriptionMixin
+
+
+class CustomizedDocument(..., TranscriptionMixin):
+    """Extra fields and methods for Document model."""
+    search_fields = ... + [
+        index.SearchField(
+            'transcription',
+            partial_match=False,
+        ),
+    ]
+
+    def save(self, **kwargs):
+        """Send the document_saved signal."""
+        send_signal = kwargs.pop('document_saved_signal', True)
+        super(Document, self).save(**kwargs)
+        if send_signal:
+            document_saved.send(sender=self.__class__, instance=self)
+```
+
+
 ## TO DO
 
 - Check textract dependency version compatibility with current Wagtail dependencies
@@ -113,6 +145,7 @@ because you can't do `pageurl result` on a Document:
 - Coen van der Kamp
 - Mike Overkamp
 - Thibaud Colas
+- Dan Braghis
 
 
 [1]: https://wagtail.io/
