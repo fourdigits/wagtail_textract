@@ -1,3 +1,4 @@
+import asyncio
 import logging
 import textract
 
@@ -6,9 +7,10 @@ from wagtail.documents.models import get_document_model
 from wagtail_textract.signals import document_saved
 
 logger = logging.getLogger(__name__)
+loop = asyncio.get_event_loop()
 
 
-def transcribe_document(instance, **kwargs):
+def transcribe_document(instance):
     """Store the Document file's text in the transcription field."""
     try:
         text = textract.process(instance.file.path).strip()
@@ -36,8 +38,13 @@ def transcribe_document(instance, **kwargs):
         logger.error('No text found.')
 
 
+def async_transcribe_document(instance, **kwargs):
+    """Defer transcription to an asyncio executor."""
+    loop.run_in_executor(None, transcribe_document, instance)
+
+
 def register_signal_handlers():
     """Transcribe Document on save."""
     Document = get_document_model()
 
-    document_saved.connect(transcribe_document, sender=Document)
+    document_saved.connect(async_transcribe_document, sender=Document)
