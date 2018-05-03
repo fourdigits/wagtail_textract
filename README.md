@@ -109,6 +109,7 @@ because you can't do `pageurl result` on a Document:
 - Karl Hobley
 - Bertrand Bordage
 - Kees Hink
+- Tom Hendrikx
 - Coen van der Kamp
 - Mike Overkamp
 - Thibaud Colas
