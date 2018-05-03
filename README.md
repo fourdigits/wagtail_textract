@@ -101,6 +101,8 @@ because you can't do `pageurl result` on a Document:
 ## TO DO
 
 - Check textract dependency version compatibility with current Wagtail dependencies
+- Tests
+
 
 [1]: https://wagtail.io/
 [2]: https://github.com/deanmalmgren/textract
