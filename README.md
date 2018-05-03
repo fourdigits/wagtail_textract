@@ -7,6 +7,10 @@ Textract can extract text from (among [others][6]) PDF, Excel and Word files.
 
 The package was inspired by the ["Search: Extract text from documents" issue][3] in Wagtail.
 
+Documents will work as before, except that Document search in Wagtail's admin interface
+will also find search terms in the files' contents.
+
+
 ## Requirements
 
 - Wagtail 2
