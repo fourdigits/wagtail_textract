@@ -7,9 +7,16 @@ Textract can extract text from (among [others][6]) PDF, Excel and Word files.
 
 The package was inspired by the ["Search: Extract text from documents" issue][3] in Wagtail.
 
+## Requirements
+
+- Wagtail 2
+- Tested on Python 3.4, 3.5 and 3.6
+- The [Textract dependencies][8]
+
+
 ## Installation
 
-- Install the Texttract dependencies: http://textract.readthedocs.io/en/latest/installation.html
+- Install the [Textract dependencies][8]
 - Add `wagtail_textract` to your requirements and/or `pip install wagtail_textract`
 - Add to your Django `INSTALLED_APPS`, after `wagtail.documents`.
 - Put `WAGTAILDOCS_DOCUMENT_MODEL = "wagtail_textract.document"` in your Django settings.
@@ -27,7 +34,8 @@ Create a `tessdata` directory in your project directory, and download the
 
 ## Transcribing
 
-Transcribing is done automatically on Document save.
+Transcription is done automatically after Document save,
+in an [`asyncio`][7] executor to prevent blocking the response during processing.
 
 This is done using a new `document_saved` signal,
 which is emitted by the new Document model's object on every save.
@@ -42,7 +50,6 @@ This may take a long time, obviously.
 ## TO DO
 
 - Check textract dependency version compatibility with current Wagtail dependencies
-- Handle `transcribe()` asynchronously or in a cron job, to prevent long waits on upload / edit
 
 [1]: https://wagtail.io/
 [2]: https://github.com/deanmalmgren/textract
@@ -50,3 +57,5 @@ This may take a long time, obviously.
 [4]: https://github.com/tesseract-ocr
 [5]: https://github.com/tesseract-ocr/tessdata
 [6]: http://textract.readthedocs.io/en/stable/#currently-supporting
+[7]: https://docs.python.org/3/library/asyncio.html
+[8]: http://textract.readthedocs.io/en/latest/installation.html
