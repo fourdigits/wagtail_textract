@@ -104,6 +104,16 @@ because you can't do `pageurl result` on a Document:
 - Tests
 
 
+## Contributors
+
+- Karl Hobley
+- Bertrand Bordage
+- Kees Hink
+- Coen van der Kamp
+- Mike Overkamp
+- Thibaud Colas
+
+
 [1]: https://wagtail.io/
 [2]: https://github.com/deanmalmgren/textract
 [3]: https://github.com/wagtail/wagtail/issues/542
