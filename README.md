@@ -121,10 +121,19 @@ Note that the first class to subclass should be `TranscriptionMixin`,
 so its `save()` takes precedence over that of the other parent classes.
 
 
+## Tests
+
+To run tests, checkout this repository and:
+
+    virtualenv --python=`which python3.6` env
+    . env/bin/activate
+    pip install -e ".[test]"
+    pytest
+
+
 ## TO DO
 
 - Check textract dependency version compatibility with current Wagtail dependencies
-- Tests
 
 
 ## Contributors

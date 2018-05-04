@@ -19,6 +19,11 @@ install_requires = [
     "textract",
 ]
 
+tests_require = [
+    'pytest',
+    'pytest-django',
+]
+
 setup(
     name='wagtail-textract',
     version=0.1,
@@ -44,10 +49,13 @@ setup(
         'Programming Language :: Python :: 3.6',
         'Framework :: Django',
         'Framework :: Django :: 2.0',
+        'Framework :: Wagtail',
+        'Framework :: Wagtail :: 2',
         'Topic :: Internet :: WWW/HTTP :: Site Management',
     ],
     install_requires=install_requires,
     extras_require={
+        'test': tests_require,
     },
     entry_points="""""",
     zip_safe=False,
