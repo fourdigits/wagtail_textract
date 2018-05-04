@@ -1,12 +1,22 @@
-sudo: false
+sudo: required
+dist: trusty
+
 language: python
 cache: pip
+
 branches:
   only:
     - travis-setup
+
+# taken from Textract .travis.yml
+before_install:
+  - sudo ./provision/debian.sh
+
 # command to install dependencies
 install:
+  - ./provision/python.sh
   - pip install tox
+
 # command to run tests
 script:
   - tox -e $TOXENV
