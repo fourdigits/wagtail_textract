@@ -10,11 +10,11 @@ branches:
 
 # taken from Textract .travis.yml
 before_install:
-  - sudo ./provision/debian.sh
+  - sudo ./travis-textract-requirements/debian.sh
 
 # command to install dependencies
 install:
-  - ./provision/python.sh
+  - ./travis-textract-requirements/python.sh
   - pip install tox
 
 # command to run tests
