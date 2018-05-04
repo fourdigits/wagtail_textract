@@ -98,10 +98,19 @@ because you can't do `pageurl result` on a Document:
 ```
 
 
+## Tests
+
+To run tests, checkout this repository and:
+
+    virtualenv --python=`which python3.6` env
+    . env/bin/activate
+    pip install -e ".[test]"
+    pytest
+
+
 ## TO DO
 
 - Check textract dependency version compatibility with current Wagtail dependencies
-- Tests
 
 
 ## Contributors
