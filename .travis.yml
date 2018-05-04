@@ -1,0 +1,17 @@
+sudo: false
+language: python
+cache: pip
+branches:
+  only:
+    - travis-setup
+# command to install dependencies
+install:
+  - pip install tox
+# command to run tests
+script:
+  - tox -e $TOXENV
+# cache: pip
+matrix:
+  include:
+    - env: TOXENV=py36-dj20-wt20
+      python: 3.6
