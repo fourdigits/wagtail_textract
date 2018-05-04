@@ -2,7 +2,7 @@ from django.db import models
 from wagtail.documents.models import Document as WagtailDocument
 from wagtail.search import index
 
-from .signals import document_saved
+from wagtail_textract.handlers import async_transcribe_document
 
 
 class TranscriptionMixin(models.Model):
@@ -24,8 +24,8 @@ class Document(WagtailDocument, TranscriptionMixin):
     ]
 
     def save(self, **kwargs):
-        """Send the document_saved signal."""
-        send_signal = kwargs.pop('document_saved_signal', True)
+        """Asynchronously transcribe the file."""
+        transcribe = kwargs.pop('transcribe', True)
         super(Document, self).save(**kwargs)
-        if send_signal:
-            document_saved.send(sender=self.__class__, instance=self)
+        if transcribe:
+            async_transcribe_document(self)

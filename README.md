@@ -44,9 +44,6 @@ Create a `tessdata` directory in your project directory, and download the
 Transcription is done automatically after Document save,
 in an [`asyncio`][7] executor to prevent blocking the response during processing.
 
-This is done using a new `document_saved` signal,
-which is emitted by the new Document model's object on every save.
-
 To transcribe all existing Documents, run the management command::
 
     ./manage.py transcribe_documents
@@ -108,8 +105,8 @@ the same as [wagtail_textract's Document](./src/wagtail_textract/models.py):
 - modify `save()`
 
 ```python
-from wagtail_textrans.signals import document_saved
-from wagtail_textrans.models import TranscriptionMixin
+from wagtail_textract.handlers import async_transcribe_document
+from wagtail_textract.models import TranscriptionMixin
 
 
 class CustomizedDocument(..., TranscriptionMixin):
@@ -122,11 +119,11 @@ class CustomizedDocument(..., TranscriptionMixin):
     ]
 
     def save(self, **kwargs):
-        """Send the document_saved signal."""
-        send_signal = kwargs.pop('document_saved_signal', True)
+        """Asynchronously transcribe the file."""
+        transcribe = kwargs.pop('transcribe', True)
         super(Document, self).save(**kwargs)
-        if send_signal:
-            document_saved.send(sender=self.__class__, instance=self)
+        if transcribe:
+            async_transcribe_document(self)
 ```
 
 
