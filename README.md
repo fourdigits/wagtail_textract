@@ -44,9 +44,6 @@ Create a `tessdata` directory in your project directory, and download the
 Transcription is done automatically after Document save,
 in an [`asyncio`][7] executor to prevent blocking the response during processing.
 
-This is done using a new `document_saved` signal,
-which is emitted by the new Document model's object on every save.
-
 To transcribe all existing Documents, run the management command::
 
     ./manage.py transcribe_documents
@@ -98,6 +95,32 @@ because you can't do `pageurl result` on a Document:
 ```
 
 
+## What if you already use a custom Document model?
+
+In order to use wagtail_textract, your `CustomizedDocument` model should do
+the same as [wagtail_textract's Document](./src/wagtail_textract/models.py):
+
+- subclass `TranscriptionMixin`
+- alter `search_fields`
+
+```python
+from wagtail_textract.models import TranscriptionMixin
+
+
+class CustomizedDocument(TranscriptionMixin, ...):
+    """Extra fields and methods for Document model."""
+    search_fields = ... + [
+        index.SearchField(
+            'transcription',
+            partial_match=False,
+        ),
+    ]
+```
+
+Note that the first class to subclass should be `TranscriptionMixin`,
+so its `save()` takes precedence over that of the other parent classes.
+
+
 ## Tests
 
 To run tests, checkout this repository and:
@@ -122,6 +145,7 @@ To run tests, checkout this repository and:
 - Coen van der Kamp
 - Mike Overkamp
 - Thibaud Colas
+- Dan Braghis
 
 
 [1]: https://wagtail.io/
