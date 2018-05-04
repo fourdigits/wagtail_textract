@@ -102,14 +102,12 @@ the same as [wagtail_textract's Document](./src/wagtail_textract/models.py):
 
 - subclass `TranscriptionMixin`
 - alter `search_fields`
-- modify `save()`
 
 ```python
-from wagtail_textract.handlers import async_transcribe_document
 from wagtail_textract.models import TranscriptionMixin
 
 
-class CustomizedDocument(..., TranscriptionMixin):
+class CustomizedDocument(TranscriptionMixin, ...):
     """Extra fields and methods for Document model."""
     search_fields = ... + [
         index.SearchField(
@@ -117,14 +115,10 @@ class CustomizedDocument(..., TranscriptionMixin):
             partial_match=False,
         ),
     ]
-
-    def save(self, **kwargs):
-        """Asynchronously transcribe the file."""
-        transcribe = kwargs.pop('transcribe', True)
-        super(Document, self).save(**kwargs)
-        if transcribe:
-            async_transcribe_document(self)
 ```
+
+Note that the first class to subclass should be `TranscriptionMixin`,
+so its `save()` takes precedence over that of the other parent classes.
 
 
 ## TO DO
