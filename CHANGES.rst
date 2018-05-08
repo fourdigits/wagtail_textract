@@ -1,7 +1,7 @@
 CHANGES
 =======
 
-0.1 (unreleased)
-----------------
+0.1-alpha (unreleased)
+----------------------
 
 - initial version
