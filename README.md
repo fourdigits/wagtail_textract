@@ -30,6 +30,15 @@ but also in a public-facing search view, for which we provide a code example.
 - Add to your Django `INSTALLED_APPS`, after `wagtail.documents`.
 - Put `WAGTAILDOCS_DOCUMENT_MODEL = "wagtail_textract.document"` in your Django settings.
 
+Note: You'll get an incompatibility warning during installation of wagtail_textract (Wagtail 2.0.1 installed):
+
+```
+requests 2.18.4 has requirement chardet<3.1.0,>=3.0.2, but you'll have chardet 2.3.0 which is incompatible.
+textract 1.6.1 has requirement beautifulsoup4==4.5.3, but you'll have beautifulsoup4 4.6.0 which is incompatible.
+```
+
+We haven't seen this leading to problems, but it's something to keep in mind.
+
 
 ### Tesseract
 
@@ -131,11 +140,6 @@ To run tests, checkout this repository and:
     . env/bin/activate
     pip install -e ".[test]"
     pytest
-
-
-## TO DO
-
-- Check textract dependency version compatibility with current Wagtail dependencies
 
 
 ## Contributors
