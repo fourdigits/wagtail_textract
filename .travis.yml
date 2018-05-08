@@ -1,0 +1,31 @@
+sudo: required
+dist: trusty
+
+language: python
+cache: pip
+
+branches:
+  only:
+    - travis-setup
+
+# taken from Textract .travis.yml
+before_install:
+  - sudo ./travis-textract-requirements/debian.sh
+
+# command to install dependencies
+install:
+  - ./travis-textract-requirements/python.sh
+  - pip install tox
+
+# command to run tests
+script:
+  - tox -e $TOXENV
+# cache: pip
+matrix:
+  include:
+    - env: TOXENV=py34-dj20-wt20
+      python: 3.4
+    - env: TOXENV=py35-dj20-wt20
+      python: 3.5
+    - env: TOXENV=py36-dj20-wt20
+      python: 3.6
