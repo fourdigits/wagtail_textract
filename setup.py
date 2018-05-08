@@ -36,6 +36,7 @@ setup(
     include_package_data=True,
     license='BSD',
     long_description=open('README.md', 'r').read(),
+    long_description_content_type='text/markdown',
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Environment :: Web Environment',
