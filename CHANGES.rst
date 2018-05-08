@@ -1,7 +1,7 @@
 CHANGES
 =======
 
-0.1a1 (unreleased)
+0.1a1 (2018-05-08)
 ------------------
 
 - Fix README markdown rendering on PyPI.
