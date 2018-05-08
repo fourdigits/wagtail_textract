@@ -4,10 +4,6 @@ dist: trusty
 language: python
 cache: pip
 
-branches:
-  only:
-    - travis-setup
-
 # taken from Textract .travis.yml
 before_install:
   - sudo ./travis-textract-requirements/debian.sh
