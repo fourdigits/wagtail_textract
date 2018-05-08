@@ -2,8 +2,8 @@
 # packages that are required by textract itself (python), packages for
 # documentation builds (python-doc)
 
--r python
--r python-doc
+-r python.txt
+-r python-doc.txt
 
 # needed for tests/run.py script to read .travis.yml file
 PyYAML==3.12
