@@ -21,7 +21,7 @@ It is listed in the admin interface under Documents:
 ![Document List](/docs/screenshot_document_list_test_document.png)
 
 If we now search in Documents for the word `correct`, which is one of the handwritten words,
-the live serach finds it:
+the live search finds it:
 
 ![Document Search finds PDF by searching for "staple"](/docs/screenshot_document_search_correct.png)
 
