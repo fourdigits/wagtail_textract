@@ -12,6 +12,19 @@ The package was inspired by the ["Search: Extract text from documents" issue][3]
 Documents will work as before, except that Document search in Wagtail's admin interface
 will also find search terms in the files' contents.
 
+Some screenshots to illustrate.
+
+In our fresh Wagtail site with `wagtail_textrans` installed,
+we uploaded a [file called `test_document.pdf`](./src/wagtail_textract/tests/testfiles/test_document.pdf) with handwritten text in it.
+It is listed in the admin interface under Documents:
+
+![Document List](/docs/screenshot_document_list_test_document.png)
+
+If we now search in Documents for the word `correct`, which is one of the handwritten words,
+the live serach finds it:
+
+![Document Search finds PDF by searching for "staple"](/docs/screenshot_document_search_correct.png)
+
 The assumption is that this search should not only be available in Wagtail's admin interface,
 but also in a public-facing search view, for which we provide a code example.
 
