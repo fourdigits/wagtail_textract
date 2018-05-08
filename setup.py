@@ -30,7 +30,7 @@ setup(
     description='Allow searching for text in Documents in the Wagtail content management system',
     author='Kees Hink',
     author_email='kees@fourdigits.nl',
-    url='https://github.com/fourdigits/wagtail-textract',
+    url='https://github.com/fourdigits/wagtail_textract',
     package_dir={'': 'src'},
     packages=find_packages('src'),
     include_package_data=True,
