@@ -12,6 +12,19 @@ The package was inspired by the ["Search: Extract text from documents" issue][3]
 Documents will work as before, except that Document search in Wagtail's admin interface
 will also find search terms in the files' contents.
 
+Some screenshots to illustrate.
+
+In our fresh Wagtail site with `wagtail_textrans` installed,
+we uploaded a [file called `test_document.pdf`](./src/wagtail_textract/tests/testfiles/test_document.pdf) with handwritten text in it.
+It is listed in the admin interface under Documents:
+
+![Document List](/docs/screenshot_document_list_test_document.png)
+
+If we now search in Documents for the word `correct`, which is one of the handwritten words,
+the live serach finds it:
+
+![Document Search finds PDF by searching for "staple"](/docs/screenshot_document_search_correct.png)
+
 The assumption is that this search should not only be available in Wagtail's admin interface,
 but also in a public-facing search view, for which we provide a code example.
 
@@ -29,6 +42,15 @@ but also in a public-facing search view, for which we provide a code example.
 - Add `wagtail_textract` to your requirements and/or `pip install wagtail_textract`
 - Add to your Django `INSTALLED_APPS`, after `wagtail.documents`.
 - Put `WAGTAILDOCS_DOCUMENT_MODEL = "wagtail_textract.document"` in your Django settings.
+
+Note: You'll get an incompatibility warning during installation of wagtail_textract (Wagtail 2.0.1 installed):
+
+```
+requests 2.18.4 has requirement chardet<3.1.0,>=3.0.2, but you'll have chardet 2.3.0 which is incompatible.
+textract 1.6.1 has requirement beautifulsoup4==4.5.3, but you'll have beautifulsoup4 4.6.0 which is incompatible.
+```
+
+We haven't seen this leading to problems, but it's something to keep in mind.
 
 
 ### Tesseract
@@ -131,11 +153,6 @@ To run tests, checkout this repository and:
     . env/bin/activate
     pip install -e ".[test]"
     pytest
-
-
-## TO DO
-
-- Check textract dependency version compatibility with current Wagtail dependencies
 
 
 ## Contributors
