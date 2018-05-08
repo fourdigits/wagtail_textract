@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/fourdigits/wagtail_textract.svg?branch=travis-setup)](https://travis-ci.org/fourdigits/wagtail_textract)
+[![Build Status](https://travis-ci.org/fourdigits/wagtail_textract.svg?branch=master)](https://travis-ci.org/fourdigits/wagtail_textract)
 
 # Text extraction for Wagtail document search
 
