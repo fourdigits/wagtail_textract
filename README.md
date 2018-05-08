@@ -36,6 +36,12 @@ but also in a public-facing search view, for which we provide a code example.
 - The [Textract dependencies][8]
 
 
+## Maturity
+
+We consider this package to be in alpha stage.
+We intend to start using it in production in July 2018.
+
+
 ## Installation
 
 - Install the [Textract dependencies][8]
