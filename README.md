@@ -14,7 +14,7 @@ will also find search terms in the files' contents.
 
 Some screenshots to illustrate.
 
-In our fresh Wagtail site with `wagtail_textrans` installed,
+In our fresh Wagtail site with `wagtail_textract` installed,
 we uploaded a [file called `test_document.pdf`](./src/wagtail_textract/tests/testfiles/test_document.pdf) with handwritten text in it.
 It is listed in the admin interface under Documents:
 
