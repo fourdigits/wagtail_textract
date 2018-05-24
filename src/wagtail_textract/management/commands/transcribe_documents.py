@@ -2,6 +2,8 @@ from django.core.management.base import BaseCommand
 
 from wagtail.documents.models import get_document_model
 
+from wagtail_textract.handlers import async_transcribe_document
+
 
 class Command(BaseCommand):
     """Extract text from all Documents."""
@@ -10,4 +12,4 @@ class Command(BaseCommand):
         """Extract text from all Documents."""
         for document in get_document_model().objects.all():
             self.stdout.write("Transcribing %s" % document)
-            document.transcribe()
+            async_transcribe_document(document)
