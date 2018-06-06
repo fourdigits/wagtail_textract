@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.org/fourdigits/wagtail_textract.svg?branch=master)](https://travis-ci.org/fourdigits/wagtail_textract)
 
+[![Coverage Report](http://codecov.io/github/fourdigits/wagtail_textract/coverage.svg?branch=master)](http://codecov.io/github/fourdigits/wagtail_textract?branch=master)
+
 # Text extraction for Wagtail document search
 
 This package is for replacing [Wagtail][1]'s Document class with one
