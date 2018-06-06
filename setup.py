@@ -23,6 +23,7 @@ tests_require = [
     'pytest',
     'pytest-django',
     'coverage',
+    'codecov',
 ]
 
 setup(
