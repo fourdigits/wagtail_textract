@@ -22,6 +22,7 @@ install_requires = [
 tests_require = [
     'pytest',
     'pytest-django',
+    'coverage',
 ]
 
 setup(

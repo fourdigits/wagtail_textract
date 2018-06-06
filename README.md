@@ -157,6 +157,11 @@ To run tests, checkout this repository and:
     make test
 
 
+### Coverage
+
+A coverage report will be generated in `./coverage_html_report/`.
+
+
 ## Contributors
 
 - Karl Hobley

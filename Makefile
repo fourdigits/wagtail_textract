@@ -7,4 +7,4 @@ tessdata:
 
 test: tessdata env
 	env/bin/pip install -e ".[test]"
-	env/bin/pytest
+	coverage run env/bin/pytest
