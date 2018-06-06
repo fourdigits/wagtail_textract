@@ -154,11 +154,7 @@ so its `save()` takes precedence over that of the other parent classes.
 
 To run tests, checkout this repository and:
 
-    make tessdata
-    virtualenv --python=`which python3` env
-    . env/bin/activate
-    pip install -e ".[test]"
-    pytest
+    make test
 
 
 ## Contributors
