@@ -7,4 +7,4 @@ tessdata:
 
 test: tessdata env
 	env/bin/pip install -e ".[test]"
-	coverage run env/bin/pytest
+	coverage run --source=src/wagtail_textract env/bin/pytest
