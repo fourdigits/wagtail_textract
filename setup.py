@@ -15,7 +15,7 @@ except ImportError:
 
 
 install_requires = [
-    "wagtail>=2,<2.1",
+    "wagtail>=2,<2.2",
     "textract",
 ]
 
