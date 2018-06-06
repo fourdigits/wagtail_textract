@@ -31,8 +31,7 @@ but also in a public-facing search view, for which we provide a code example.
 
 ## Requirements
 
-- Wagtail 2
-- Tested on Python 3.4, 3.5 and 3.6
+- Wagtail 2 (see [tox.ini](./tox.ini))
 - The [Textract dependencies][8]
 
 
@@ -156,7 +155,7 @@ so its `save()` takes precedence over that of the other parent classes.
 To run tests, checkout this repository and:
 
     make tessdata
-    virtualenv --python=`which python3.6` env
+    virtualenv --python=`which python3` env
     . env/bin/activate
     pip install -e ".[test]"
     pytest
