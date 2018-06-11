@@ -1,7 +1,7 @@
 CHANGES
 =======
 
-0.1b1 (unreleased)
+0.1b1 (2018-06-11)
 ------------------
 
 - Nothing changed yet.
