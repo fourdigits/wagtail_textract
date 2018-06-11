@@ -38,7 +38,7 @@ but also in a public-facing search view, for which we provide a code example.
 
 ## Maturity
 
-We consider this package to be in alpha stage.
+We consider this package to be in beta stage.
 We intend to start using it in production in July 2018.
 
 
