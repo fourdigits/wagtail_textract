@@ -8,3 +8,4 @@ include tox.ini
 recursive-include travis-textract-requirements *
 global-exclude __pycache__
 global-exclude *.py[co]
+exclude Makefile
