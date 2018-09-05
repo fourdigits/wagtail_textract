@@ -38,8 +38,7 @@ but also in a public-facing search view, for which we provide a code example.
 
 ## Maturity
 
-We consider this package to be in beta stage.
-We intend to start using it in production in July 2018.
+We have been using this package in production since August 2018 on https://nuffic.nl.
 
 
 ## Installation
