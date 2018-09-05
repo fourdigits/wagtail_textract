@@ -1,10 +1,10 @@
 CHANGES
 =======
 
-0.1b2 (unreleased)
-------------------
+1.0 (unreleased)
+----------------
 
-- Nothing changed yet.
+- Updated version of python-pptx.
 
 
 0.1b1 (2018-06-11)

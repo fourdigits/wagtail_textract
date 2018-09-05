@@ -28,7 +28,7 @@ tests_require = [
 
 setup(
     name='wagtail-textract',
-    version='0.1b2.dev0',
+    version='1.0dev',
     description='Allow searching for text in Documents in the Wagtail content management system',
     author='Kees Hink',
     author_email='kees@fourdigits.nl',
