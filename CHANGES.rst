@@ -1,7 +1,7 @@
 CHANGES
 =======
 
-1.1 (unreleased)
+1.1 (2019-04-15)
 ----------------
 
 - Updated dependency requirements.
