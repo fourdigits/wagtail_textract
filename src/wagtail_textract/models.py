@@ -18,7 +18,7 @@ class TranscriptionMixin(models.Model):
         transcribe = kwargs.pop('transcribe', True)
         super(TranscriptionMixin, self).save(**kwargs)
         if transcribe:
-            async_transcribe_document(self)
+            async_transcribe_document(self, None)
 
 
 class Document(TranscriptionMixin, WagtailDocument):
