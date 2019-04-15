@@ -172,6 +172,7 @@ A coverage report will be generated in `./coverage_html_report/`.
 - Mike Overkamp
 - Thibaud Colas
 - Dan Braghis
+- Dan Swain
 
 
 [1]: https://wagtail.io/
