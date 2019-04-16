@@ -6,12 +6,13 @@ logger = logging.getLogger(__name__)
 loop = asyncio.get_event_loop()
 
 
-def transcribe_document(document):
+def transcribe_document(document, options):
     """Store the Document file's text in the transcription field."""
     try:
         text = textract.process(document.file.path).strip()
         if not text:
-            logger.debug('No text found, falling back to tesseract.')
+            if 'verbosity' in options and options['verbosity'] >= 2:
+                print('No text found - falling back to tesseract:  {} ({})'.format(document, document.filename))
             text = textract.process(
                 document.file.path,
                 method='tesseract',
@@ -20,7 +21,7 @@ def transcribe_document(document):
     except Exception as err:
         text = None
         logger.error(
-            'Text extraction error with file {file}: {message}'.format(
+            '\n\nText extraction error with file {file}:  {message}\n\n'.format(
                 file=document.filename,
                 message=str(err),
             )
@@ -29,11 +30,13 @@ def transcribe_document(document):
     if text:
         document.transcription = text.decode()
         document.save(transcribe=False)
-        print("Saved transcription: %s" % text)
+        if 'verbosity' in options and options['verbosity'] == 3:
+            print("Saved transcription for {}:\n{}\n".format(document, text))
     else:
-        logger.error('No text found.')
+        logger.error('No text found:  {} ({})'.format(document, document.filename))
 
 
-def async_transcribe_document(document):
+def async_transcribe_document(document, options):
     """Defer transcription to an asyncio executor."""
-    loop.run_in_executor(None, transcribe_document, document)
+    loop.run_in_executor(None, transcribe_document, document, options)
+
