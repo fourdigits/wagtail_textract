@@ -1,10 +1,16 @@
 CHANGES
 =======
 
-1.1 (unreleased)
+1.2 (unreleased)
 ----------------
 
 - Nothing changed yet.
+
+
+1.1 (2019-04-15)
+----------------
+
+- Updated dependency requirements.
 
 
 1.0 (2018-09-05)
