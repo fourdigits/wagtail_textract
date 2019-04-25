@@ -15,7 +15,7 @@ except ImportError:
 
 
 install_requires = [
-    "wagtail>=2,<2.5",
+    "wagtail>=2,<2.6",
     "textract",
 ]
 
@@ -54,6 +54,7 @@ setup(
         'Framework :: Django',
         'Framework :: Django :: 2.0',
         'Framework :: Django :: 2.1',
+        'Framework :: Django :: 2.2',
         'Framework :: Wagtail',
         'Framework :: Wagtail :: 2',
         'Topic :: Internet :: WWW/HTTP :: Site Management',
