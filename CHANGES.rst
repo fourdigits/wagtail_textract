@@ -4,7 +4,7 @@ CHANGES
 1.2 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Update Wagtail requirement: 2 through 2.5:  https://github.com/fourdigits/wagtail_textract/pull/28/
 
 
 1.1 (2019-04-15)
