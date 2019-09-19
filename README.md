@@ -73,13 +73,26 @@ Create a `tessdata` directory in your project directory, and download the
 Transcription is done automatically after Document save,
 in an [`asyncio`][7] executor to prevent blocking the response during processing.
 
-To transcribe all existing Documents, run the management command::
+### Transcribe existing documents
+
+To transcribe all existing Documents, run the management command:
 
     ./manage.py transcribe_documents
 
-This may take a long time, obviously.
+Transcribing every document may take a long time.  To transcribe a subset of documents, include a slice notation that will be applied to the document queryset (the alternative `-s` syntax may also be used, e.g. `-s 4:7`):
 
+    ./manage.py transcribe_documents --slice 4:7
 
+To control the amount of text written to the terminal while transcribing, set `--verbosity` to a level between 0 and 3 (the alternative `-v` syntax may also be used, e.g. `-v 2`):
+
+    ./manage.py transcribe_documents --slice 4:7 --verbosity 2
+
+Verbosity level 0 outputs only the number of documents to be trancribed.  Verbosity level 1 also outputs the name of each document, the number of the document in the subject queryset, and the slice notation that would cause a particular document to be transcribed.  Verbosity level 2 also outputs a message when Tesseract is invoked.  Verbosity level 3 adds to the output of levels 0 through 2 by outputting the text that was transcribed for a document.
+
+To do a dry run without actually starting transcription, include the `--dry-run` flag (the alternative `-d` syntax may also be used):
+
+    ./manage.py transcribe_documents --slice 4:7 --verbosity 2 --dry-run
+    
 ## Usage in custom view
 
 Here is a code example for a search view (outside Wagtail's admin interface)
