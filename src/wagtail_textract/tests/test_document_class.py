@@ -1,4 +1,4 @@
-from wagtail.documents.models import get_document_model
+from wagtail.documents import get_document_model
 
 
 def test_document_class():

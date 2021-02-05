@@ -83,7 +83,7 @@ that shows both Page and Document results.
 from itertools import chain
 
 from wagtail.core.models import Page
-from wagtail.documents.models import get_document_model
+from wagtail.documents import get_document_model
 
 
 def search(request):

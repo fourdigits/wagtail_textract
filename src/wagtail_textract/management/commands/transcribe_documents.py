@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand
 
-from wagtail.documents.models import get_document_model
+from wagtail.documents import get_document_model
 
 from wagtail_textract.handlers import async_transcribe_document
 

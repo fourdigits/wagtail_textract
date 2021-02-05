@@ -3,7 +3,7 @@ import time
 
 from django.core.files import File
 from django.core.management import call_command
-from wagtail.documents.models import get_document_model
+from wagtail.documents import get_document_model
 
 Document = get_document_model()
 
