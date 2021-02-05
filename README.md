@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/fourdigits/wagtail_textract.svg?branch=master)](https://travis-ci.org/fourdigits/wagtail_textract)
 [![Coverage Report](http://codecov.io/github/fourdigits/wagtail_textract/coverage.svg?branch=master)](http://codecov.io/github/fourdigits/wagtail_textract?branch=master)
+[![PyPI version](https://badge.fury.io/py/wagtail-textract.svg)](https://badge.fury.io/py/wagtail-textract)
 
 # Text extraction for Wagtail document search
 
@@ -29,17 +30,14 @@ the live search finds it:
 The assumption is that this search should not only be available in Wagtail's admin interface,
 but also in a public-facing search view, for which we provide a code example.
 
-
 ## Requirements
 
 - Wagtail 2 (see [tox.ini](./tox.ini))
 - The [Textract dependencies][8]
 
-
 ## Maturity
 
 We have been using this package in production since August 2018 on https://nuffic.nl.
-
 
 ## Installation
 
@@ -57,7 +55,6 @@ textract 1.6.1 has requirement beautifulsoup4==4.5.3, but you'll have beautifuls
 
 We haven't seen this leading to problems, but it's something to keep in mind.
 
-
 ### Tesseract
 
 In order to make `textract` use [Tesseract][4], which happens if regular
@@ -66,7 +63,6 @@ base its word matching on.
 
 Create a `tessdata` directory in your project directory, and download the
 [languages][5] you want.
-
 
 ## Transcribing
 
@@ -78,7 +74,6 @@ To transcribe all existing Documents, run the management command::
     ./manage.py transcribe_documents
 
 This may take a long time, obviously.
-
 
 ## Usage in custom view
 
@@ -123,7 +118,6 @@ because you can't do `pageurl result` on a Document:
 {% endif %}
 ```
 
-
 ## What if you already use a custom Document model?
 
 In order to use wagtail_textract, your `CustomizedDocument` model should do
@@ -149,18 +143,15 @@ class CustomizedDocument(TranscriptionMixin, ...):
 Note that the first class to subclass should be `TranscriptionMixin`,
 so its `save()` takes precedence over that of the other parent classes.
 
-
 ## Tests
 
 To run tests, checkout this repository and:
 
     make test
 
-
 ### Coverage
 
 A coverage report will be generated in `./coverage_html_report/`.
-
 
 ## Contributors
 
@@ -173,7 +164,6 @@ A coverage report will be generated in `./coverage_html_report/`.
 - Thibaud Colas
 - Dan Braghis
 - Dan Swain
-
 
 [1]: https://wagtail.io/
 [2]: https://github.com/deanmalmgren/textract
