@@ -29,17 +29,14 @@ the live search finds it:
 The assumption is that this search should not only be available in Wagtail's admin interface,
 but also in a public-facing search view, for which we provide a code example.
 
-
 ## Requirements
 
 - Wagtail 2 (see [tox.ini](./tox.ini))
 - The [Textract dependencies][8]
 
-
 ## Maturity
 
 We have been using this package in production since August 2018 on https://nuffic.nl.
-
 
 ## Installation
 
@@ -57,7 +54,6 @@ textract 1.6.1 has requirement beautifulsoup4==4.5.3, but you'll have beautifuls
 
 We haven't seen this leading to problems, but it's something to keep in mind.
 
-
 ### Tesseract
 
 In order to make `textract` use [Tesseract][4], which happens if regular
@@ -66,7 +62,6 @@ base its word matching on.
 
 Create a `tessdata` directory in your project directory, and download the
 [languages][5] you want.
-
 
 ## Transcribing
 
@@ -79,7 +74,6 @@ To transcribe all existing Documents, run the management command::
 
 This may take a long time, obviously.
 
-
 ## Usage in custom view
 
 Here is a code example for a search view (outside Wagtail's admin interface)
@@ -89,7 +83,7 @@ that shows both Page and Document results.
 from itertools import chain
 
 from wagtail.core.models import Page
-from wagtail.documents.models import get_document_model
+from wagtail.documents import get_document_model
 
 
 def search(request):
@@ -123,7 +117,6 @@ because you can't do `pageurl result` on a Document:
 {% endif %}
 ```
 
-
 ## What if you already use a custom Document model?
 
 In order to use wagtail_textract, your `CustomizedDocument` model should do
@@ -149,18 +142,15 @@ class CustomizedDocument(TranscriptionMixin, ...):
 Note that the first class to subclass should be `TranscriptionMixin`,
 so its `save()` takes precedence over that of the other parent classes.
 
-
 ## Tests
 
 To run tests, checkout this repository and:
 
     make test
 
-
 ### Coverage
 
 A coverage report will be generated in `./coverage_html_report/`.
-
 
 ## Contributors
 
@@ -173,7 +163,6 @@ A coverage report will be generated in `./coverage_html_report/`.
 - Thibaud Colas
 - Dan Braghis
 - Dan Swain
-
 
 [1]: https://wagtail.io/
 [2]: https://github.com/deanmalmgren/textract
