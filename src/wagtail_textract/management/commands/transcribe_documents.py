@@ -1,6 +1,9 @@
 from django.core.management.base import BaseCommand
 
-from wagtail.documents.models import get_document_model
+try:
+    from wagtail.documents.models import get_document_model # wagtail < 2.8
+except ImportError:
+    from wagtail.documents import get_document_model # wagtail >= 2.8
 
 from wagtail_textract.handlers import async_transcribe_document
 
