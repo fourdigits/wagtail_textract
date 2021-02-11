@@ -89,7 +89,10 @@ that shows both Page and Document results.
 from itertools import chain
 
 from wagtail.core.models import Page
-from wagtail.documents.models import get_document_model
+try:
+    from wagtail.documents.models import get_document_model # wagtail < 2.8
+except ImportError:
+    from wagtail.documents import get_document_model # wagtail >= 2.8
 
 
 def search(request):
