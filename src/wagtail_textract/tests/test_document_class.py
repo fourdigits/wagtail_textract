@@ -1,4 +1,7 @@
-from wagtail.documents.models import get_document_model
+try:
+    from wagtail.documents.models import get_document_model # wagtail < 2.8
+except ImportError:
+    from wagtail.documents import get_document_model # wagtail >= 2.8
 
 
 def test_document_class():

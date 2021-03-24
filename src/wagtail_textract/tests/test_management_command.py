@@ -3,7 +3,10 @@ import time
 
 from django.core.files import File
 from django.core.management import call_command
-from wagtail.documents.models import get_document_model
+try:
+    from wagtail.documents.models import get_document_model # wagtail < 2.8
+except ImportError:
+    from wagtail.documents import get_document_model # wagtail >= 2.8
 
 Document = get_document_model()
 
