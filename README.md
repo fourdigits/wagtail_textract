@@ -19,7 +19,7 @@ The package was inspired by the ["Search: Extract text from documents" issue][3]
 Documents will work as before, except that Document search in Wagtail's admin interface
 will also find search terms in the files' contents.
 
-Some screenshots to illustrate.
+Some screenshots to illustrate. We hope that you would like it. These screenshots can help you for better understanding.
 
 In our fresh Wagtail site with `wagtail_textract` installed,
 we uploaded a [file called `test_document.pdf`](./src/wagtail_textract/tests/testfiles/test_document.pdf) with handwritten text in it.
